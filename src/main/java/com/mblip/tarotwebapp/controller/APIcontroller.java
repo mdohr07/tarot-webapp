@@ -28,5 +28,15 @@ public class APIcontroller {
         return "api";
     }
 
+    // TODO: Nur Major/Minor anzeigen
+    /*
+        - Liste mit Major/Minor anlegen
+        - Mit Karten füllen if minor/major
+     */
+
+    public String getMajorArcana() {
+        return null;
+    }
+
 
 }
