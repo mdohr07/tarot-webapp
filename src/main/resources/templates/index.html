@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/base_template :: head_entries}"/>
+    <title>Tarot</title>
+</head>
+<body>
+<header th:replace="~{fragments/base_template :: header}"></header>
+
+<a href="/cards">Show all cards</a>
+
+<div th:each="card : ${cards}">
+    <h3 th:text="${card.name}"></h3> <!-- Zeigt den Namen der Karte -->
+    <p th:text="${card.meaning_up}"></p> <!-- Bedeutung der Karte im aufrechten Zustand -->
+    <p th:text="${card.desc}"></p> <!-- Beschreibung der Karte -->
+</div>
+
+</body>
+</html>

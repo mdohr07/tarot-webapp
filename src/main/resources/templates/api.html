@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/base_template :: head_entries}"/>
+    <title>Test</title>
+</head>
+<body>
+<header th:replace="~{fragments/base_template :: header}"></header>
+
+<h2>Card(s)</h2>
+<!--In APIcontroller generierten JSON-String einbinden-->
+<p th:text="${jsonString}"></p>
+
+<!--private String type;-->
+<!--private String name_short;-->
+<!--private String name;-->
+<!--private String value;-->
+<!--private int value_int;-->
+<!--private String meaning_up;-->
+<!--private String meaning_rev;-->
+<!--private String desc;-->
+
+<div th:each="card : ${cards}">
+    <h3 th:text="${card.name}"></h3> <!-- Zeigt den Namen der Karte -->
+    <p th:text="${card.meaning_up}"></p> <!-- Bedeutung der Karte im aufrechten Zustand -->
+    <p th:text="${card.desc}"></p> <!-- Beschreibung der Karte -->
+</div>
+
+<a href="/">HOME</a>
+
+</body>
+</html>
