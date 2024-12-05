@@ -4,15 +4,32 @@
   <th:block th:fragment="head_entries">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link th:href="@{css/global.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Princess+Sofia&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 <!--    <script src="js/main.js"></script>-->
   </th:block>
   <title>Tarot Application</title>
 </head>
+
 <body>
 <header th:fragment="header">
-  <h1>Tarot</h1>
+  <h1>
+    <a th:href="@{/}">
+     Blue Tarot
+    </a>
+  </h1>
+
 </header>
+
+<nav th:fragment="aside">
+  <ul>
+    <li><a href="/cards">Alle Karten</a></li>
+    <li><a href="/cards/major">Major Arkana</a></li>
+    <li><a href="/cards/minor">Minor Arkana</a></li>
+  </ul>
+</nav>
 
 </body>
 </html>

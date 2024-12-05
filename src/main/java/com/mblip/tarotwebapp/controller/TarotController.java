@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mblip.tarotwebapp.model.TarotCard;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,13 +15,11 @@ import java.util.List;
 
 @Controller
 public class TarotController {
-    // TODO: Mapping
-    // TODO: List<TarotCard> getAllCards()
     // TODO: TarotCard getDailyCard()
     // TODO: List<TarotCard> getThreeCards()
 
     @GetMapping("/cards")
-    public String cards(Model model) {
+    public String getAllCards(Model model) {
         String baseURL = "https://tarotapi.dev/api/v1/";
         String endpoint = baseURL + "cards"; // Alle Karten
 
@@ -50,7 +47,12 @@ public class TarotController {
             e.printStackTrace();
         }
 
-        return "cards";
+        return "all-cards";
+    }
+
+    @GetMapping("/major_arcana")
+    public String getMajorArcana(Model model) {
+        return "major-arcana";
     }
 
  }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/base_template :: head_entries}"/>
+    <title>Test</title>
+</head>
+<body>
+<header th:replace="~{fragments/base_template :: header}"></header>
+
+<div class="content-wrapper">
+
+    <nav th:replace="~{fragments/base_template :: aside}"></nav>
+
+    <main>
+<!--List of all Cards-->
+        <h2>The Major Arcana</h2>
+<!--        <div th:each="card : ${cards}">-->
+<!--            <div>-->
+<!--                <h3 th:text="${card.value} + ': ' + ${card.name}"></h3>-->
+
+<!--                <details>-->
+<!--                    <summary>Description</summary>-->
+<!--                    <p th:text="${card.desc}"></p> &lt;!&ndash; Beschreibung der Karte &ndash;&gt;-->
+<!--                </details>-->
+<!--                <p th:text="${card.meaning_up}"></p> &lt;!&ndash; Bedeutung der Karte richtig rum &ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>-->
+
+    </main>
+
+</div>
+
+</body>
+</html>

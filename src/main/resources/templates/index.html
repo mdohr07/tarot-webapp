@@ -2,25 +2,23 @@
 <html lang="de" xmlns:th="https://www.thymeleaf.org">
 <head>
     <th:block th:replace="~{fragments/base_template :: head_entries}"/>
-    <title>Tarot</title>
 </head>
+
 <body>
 <header th:replace="~{fragments/base_template :: header}"></header>
 
+<div class="content-wrapper">
 
-<div th:each="card : ${cards}">
-    <h3 th:text="${card.name}"></h3> <!-- Zeigt den Namen der Karte -->
-    <p th:text="${card.meaning_up}"></p> <!-- Bedeutung der Karte im aufrechten Zustand -->
-    <p th:text="${card.desc}"></p> <!-- Beschreibung der Karte -->
+    <nav th:replace="~{fragments/base_template :: aside}"></nav>
+
+    <main>
+
+    <h2>
+       ¯\_( ఠ ͟ʖ ఠ)_/¯ ...
+    </h2>
+    </main>
+
 </div>
-
-<aside>
-    <ul>
-        <li><a href="/cards">Alle Karten</a></li>
-        <li><a href="/cards/major">Major Arkana</a></li>
-        <li><a href="/cards/minor">Minor Arkana</a></li>
-    </ul>
-</aside>
 
 </body>
 </html>
