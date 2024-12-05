@@ -2,7 +2,7 @@
 <html lang="de" xmlns:th="https://www.thymeleaf.org">
 <head>
     <th:block th:replace="~{fragments/base_template :: head_entries}"/>
-    <title>Blue Tarot | Major Arcana</title>
+    <title>Blue Tarot | Minor Arcana</title>
 </head>
 <body>
 <header th:replace="~{fragments/base_template :: header}"></header>
@@ -13,8 +13,8 @@
 
     <main>
 <!--List of all Cards-->
-        <h2>The Major Arcana</h2>
-        <div th:each="card : ${majorArcana}">
+        <h2>The Minor Arcana</h2>
+        <div th:each="card : ${minorArcana}">
             <h3 th:text="${card.value} + ' ' + ${card.name}"></h3>
             <p th:text="${card.meaning_up}"></p>
         </div>

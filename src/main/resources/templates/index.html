@@ -2,6 +2,7 @@
 <html lang="de" xmlns:th="https://www.thymeleaf.org">
 <head>
     <th:block th:replace="~{fragments/base_template :: head_entries}"/>
+    <title>Blue Tarot | Home</title>
 </head>
 
 <body>
@@ -13,9 +14,9 @@
 
     <main>
 
-    <h2>
-       ¯\_( ఠ ͟ʖ ఠ)_/¯ ...
-    </h2>
+    <h2>¯\_( ఠ ͟ʖ ఠ)_/¯ ...</h2>
+
+        <section th:replace="~{fragments/base_template :: arcana-display}"></section>
     </main>
 
 </div>

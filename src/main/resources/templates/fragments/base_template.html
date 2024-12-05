@@ -1,35 +1,57 @@
 <!DOCTYPE html>
 <html lang="de" xmlns:th="https://www.thymeleaf.org">
 <head>
-  <th:block th:fragment="head_entries">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link th:href="@{/css/style.css}" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Princess+Sofia&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-<!--    <script src="js/main.js"></script>-->
-  </th:block>
-  <title>Tarot Application</title>
+    <th:block th:fragment="head_entries">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link th:href="@{/css/style.css}" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Princess+Sofia&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+        <!--    <script src="js/main.js"></script>-->
+    </th:block>
+    <title>Blue Tarot</title>
 </head>
 
 <body>
 <header th:fragment="header">
-  <h1>
-    <a th:href="@{/}">
-     Blue Tarot
-    </a>
-  </h1>
+    <h1>
+        <a th:href="@{/}">
+            Blue Tarot
+        </a>
+    </h1>
 
 </header>
 
 <nav th:fragment="aside">
-  <ul>
-    <li><a href="/cards">Alle Karten</a></li>
-    <li><a href="/cards/major">Major Arkana</a></li>
-    <li><a href="/cards/minor">Minor Arkana</a></li>
-  </ul>
+    <ul>
+        <li><a href="/all-cards/">All Cards</a></li>
+    </ul>
 </nav>
+
+<div th:fragment="arcana-display" class="arcana-display">
+    <section class="major">
+        <section>
+            <h3><a href="/all-cards/major-arcana">Major Arkana</a></h3>
+        </section>
+        <div>
+        <ul th:each="card : ${majorArcana}" class="arcana-list">
+            <li th:text="${card.name}"></li>
+        </ul>
+        </div>
+    </section>
+
+    <section class="minor">
+        <section>
+            <h3><a href="/all-cards/minor-arcana">Minor Arkana</a></h3>
+        </section>
+        <div>
+            <ul th:each="card : ${minorArcana}" class="arcana-list">
+                <li th:text="${card.name}"></li>
+            </ul>
+        </div>
+    </section>
+</div>
 
 </body>
 </html>

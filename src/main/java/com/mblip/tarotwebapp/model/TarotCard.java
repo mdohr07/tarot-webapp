@@ -12,8 +12,6 @@ public class TarotCard {
     private String meaning_rev;
     private String desc; // description
 
-    // TODO: Nummer der Karte anzeigen
-
     public TarotCard() { }
 
     // GETTER
