@@ -31,35 +31,18 @@ public class TarotController {
     // All Cards Page
     @GetMapping("/all-cards")
     public String getAllCards(Model model) {
-        String baseURL = "https://tarotapi.dev/api/v1/";
-        String endpoint = baseURL + "cards"; // Alle Karten
-
-        // RestTemplate-Objekt erstellen, um HTTP-Anfrage an die API zu senden
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.getForEntity(endpoint, String.class);
+        String endpoint = "https://tarotapi.dev/api/v1/cards";
+        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
 
-        String jsonString = response.getBody(); // Die JSON-String aus der Antwort
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        try {
-            // JSON-Daten in eine List von TarotCard-Objekten deserialisieren(?)
-            JsonNode rootNode = objectMapper.readTree(jsonString);
-            JsonNode cardsNode = rootNode.get("cards");
-
-            List<TarotCard> tarotDeck = new ArrayList<>();
-            for (JsonNode cardNode : cardsNode) {
-                TarotCard card = objectMapper.treeToValue(cardNode, TarotCard.class);
-                tarotDeck.add(card);
-            }
-
-            // Liste der Karten an die View übergeben
-            model.addAttribute("cards", tarotDeck);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+        if (response != null && response.getCards() != null) {
+            model.addAttribute("cards", response.getCards());
+        } else {
+            model.addAttribute("cards", List.of());
         }
-
         return "all-cards";
     }
+
 
     @GetMapping("/major_arcana")
     public String getMajorArcana(Model model) {
