@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/base_template :: head_entries}"/>
+    <title>Blue Tarot | All Cards</title>
+</head>
+<body>
+<header th:replace="~{fragments/base_template :: header}"></header>
+
+<div class="content-wrapper">
+
+    <nav th:replace="~{fragments/base_template :: aside}"></nav>
+
+    <main>
+        <h2>Card Details</h2>
+
+        <p>Type: <span th:text="${card.type}"></span></p>
+        <p>Value: <span th:text="${card.value}"></span></p>
+        <p>Description: <span th:text="${card.desc}"></span></p>
+        <p>Meaning Upright: <span th:text="${card.meaning_up}"></span></p>
+        <p>Meaning Reversed: <span th:text="${card.meaning_rev}"></span></p>
+        <a href="/all-cards" class="button">Back to All Cards</a>
+    </main>
+
+</div>
+
+</body>
+</html>

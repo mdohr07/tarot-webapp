@@ -25,7 +25,7 @@
 
 <nav th:fragment="aside">
     <ul>
-        <li><a href="/all-cards/">All Cards</a></li>
+        <li><a href="/all-cards/card-list">All Cards</a></li>
     </ul>
 </nav>
 
@@ -35,9 +35,20 @@
             <h3><a href="/all-cards/major-arcana">Major Arkana</a></h3>
         </section>
         <div>
-        <ul th:each="card : ${majorArcana}" class="arcana-list">
-            <li th:text="${card.name}"></li>
-        </ul>
+<!--            <ul>-->
+<!--                <li th:each="card : ${majorArcana}">-->
+<!--                    <a th:href="@{/all-cards/{cardName}(cardName=${card.name})}" th:text="${card.name}"></a>-->
+<!--                </li>-->
+<!--            </ul>-->
+
+            <ul>
+                <li th:each="card : ${majorArcana}">
+                    <a th:href="@{/all-cards/{cardName}(cardName=${#strings.replace(card.name_short, ' ', '-').toLowerCase()})}" th:text="${card.name}"></a>
+                </li>
+            </ul>
+
+
+
         </div>
     </section>
 

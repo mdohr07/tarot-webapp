@@ -1,8 +1,5 @@
 package com.mblip.tarotwebapp.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mblip.tarotwebapp.model.TarotApiResponse;
 import com.mblip.tarotwebapp.model.TarotCard;
 import com.mblip.tarotwebapp.model.TarotCardWrapper;
@@ -11,9 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,8 +25,8 @@ public class TarotController {
         return "index";
     }
 
-    // All Cards Page
-    @GetMapping("/all-cards")
+    //     All Cards Page
+    @GetMapping("/all-cards/card-list")
     public String getAllCards(Model model) {
         RestTemplate restTemplate = new RestTemplate();
         String endpoint = "https://tarotapi.dev/api/v1/cards";
@@ -40,13 +37,7 @@ public class TarotController {
         } else {
             model.addAttribute("cards", List.of());
         }
-        return "all-cards";
-    }
-
-
-    @GetMapping("/major_arcana")
-    public String getMajorArcana(Model model) {
-        return "major-arcana";
+        return "card-list";
     }
 
     // Major Arcana page
@@ -124,5 +115,27 @@ public class TarotController {
         return List.of();
     }
 
+    // Card Details
+    @GetMapping("/all-cards/{cardName}")
+    public String showCardDetails(@PathVariable String cardName, Model model) {
+        RestTemplate restTemplate = new RestTemplate();
+        String endpoint = "https://tarotapi.dev/api/v1/cards";
+        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
 
+        if (response != null && response.getCards() != null) {
+            // Suche nach Karte mit dem passenden Namen
+            TarotCard tarotCard = response.getCards()
+                    .stream()
+                    .filter(card -> card.getName().equalsIgnoreCase(cardName))
+                    .findFirst()
+                    .orElse(null);
+
+            if (tarotCard != null) {
+                model.addAttribute("tarotCard", tarotCard);
+                return "card-details";
+            }
+        }
+        // Falls die Karte nicht gefunden wurde
+        return "redirect:/all-cards/card-list"; // Zurück zur Liste
+    }
 }
