@@ -1,15 +1,20 @@
 package com.mblip.tarotwebapp.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TarotCard {
     private String type;
-    private String name_short;
+    @JsonProperty("name_short")
+    private String nameShort;
     private String name;
     private String value;
-    private int value_int;
-    private String meaning_up;
-    private String meaning_rev;
+    @JsonProperty("value_int")
+    private int valueInt;
+    @JsonProperty("meaning_up")
+    private String meaningUp;
+    @JsonProperty("meaning_rev")
+    private String meaningRev;
     private String desc; // description
 
     public TarotCard() { }
@@ -19,8 +24,8 @@ public class TarotCard {
         return type;
     }
 
-    public String getName_short() {
-        return name_short;
+    public String getNameShort() {
+        return nameShort;
     }
 
     public String getName() {
@@ -31,16 +36,16 @@ public class TarotCard {
         return value;
     }
 
-    public int getValue_int() {
-        return value_int;
+    public int getValueInt() {
+        return valueInt;
     }
 
-    public String getMeaning_up() {
-        return meaning_up;
+    public String getMeaningUp() {
+        return meaningUp;
     }
 
-    public String getMeaning_rev() {
-        return meaning_rev;
+    public String getMeaningRev() {
+        return meaningRev;
     }
 
     public String getDesc() {
@@ -53,8 +58,8 @@ public class TarotCard {
         this.type = type;
     }
 
-    public void setName_short(String name_short) {
-        this.name_short = name_short;
+    public void setNameShort(String nameShort) {
+        this.nameShort = nameShort;
     }
 
     public void setName(String name) {
@@ -65,16 +70,16 @@ public class TarotCard {
         this.value = value;
     }
 
-    public void setValue_int(int value_int) {
-        this.value_int = value_int;
+    public void setValueInt(int valueInt) {
+        this.valueInt = valueInt;
     }
 
-    public void setMeaning_up(String meaning_up) {
-        this.meaning_up = meaning_up;
+    public void setMeaningUp(String meaningUp) {
+        this.meaningUp = meaningUp;
     }
 
-    public void setMeaning_rev(String meaning_rev) {
-        this.meaning_rev = meaning_rev;
+    public void setMeaningRev(String meaningRev) {
+        this.meaningRev = meaningRev;
     }
 
     public void setDesc(String desc) {
@@ -85,12 +90,12 @@ public class TarotCard {
     public String toString() {
         return "\nTarotCard{" +
                 "type='" + type + '\'' +
-                ", name_short='" + name_short + '\'' +
+                ", nameShort='" + nameShort + '\'' +
                 ", name='" + name + '\'' +
                 ", value='" + value + '\'' +
-                ", value_int=" + value_int +
-                ", meaning_up='" + meaning_up + '\'' +
-                ", meaning_rev='" + meaning_rev + '\'' +
+                ", valueInt=" + valueInt +
+                ", meaningUp='" + meaningUp + '\'' +
+                ", meaningRev='" + meaningRev + '\'' +
                 ", desc='" + desc + '\'' +
                 '}';
     }

@@ -116,26 +116,29 @@ public class TarotController {
     }
 
     // Card Details
-    @GetMapping("/all-cards/{cardName}")
-    public String showCardDetails(@PathVariable String cardName, Model model) {
+    @GetMapping("/all-cards/{nameShort}")
+    public String showCardDetails(@PathVariable String nameShort, Model model) {
         RestTemplate restTemplate = new RestTemplate();
         String endpoint = "https://tarotapi.dev/api/v1/cards";
+
+        // API-Aufruf
         TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
 
-        if (response != null && response.getCards() != null) {
-            // Suche nach Karte mit dem passenden Namen
-            TarotCard tarotCard = response.getCards()
-                    .stream()
-                    .filter(card -> card.getName().equalsIgnoreCase(cardName))
+        if (response != null && response.getNhits() > 0) {
+            // Suche nach Karte basierend auf name_short
+            TarotCard tarotCard = response.getCards().stream()
+                    .filter(card -> card.getNameShort().equalsIgnoreCase(nameShort))  // Suche nach name_short
                     .findFirst()
                     .orElse(null);
 
             if (tarotCard != null) {
                 model.addAttribute("tarotCard", tarotCard);
-                return "card-details";
+                return "card-details";  // Zeigt die Karte an
             }
         }
-        // Falls die Karte nicht gefunden wurde
-        return "redirect:/all-cards/card-list"; // Zurück zur Liste
+
+        // Falls die Karte nicht gefunden wurde, zurück zur Liste
+        return "redirect:/all-cards/card-list";
     }
+
 }

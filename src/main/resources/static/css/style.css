@@ -33,6 +33,18 @@ header {
     padding: 0;
 }
 
+.content { /* contains card-wrapper */
+    /*width: 90%;*/
+}
+
+.card-wrapper > h3 {
+    background-color: #222246;
+}
+
+.card-wrapper p {
+    max-width: 50%;
+}
+
 main {
     width: 97%;
     margin: 0;

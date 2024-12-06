@@ -12,17 +12,26 @@
     <nav th:replace="~{fragments/base_template :: aside}"></nav>
 
     <main>
-<!--List of all Cards-->
+        <!--List of all Cards-->
         <h2>All Tarot Cards</h2>
-        <div th:each="card : ${cards}">
-            <div>
+        <div th:each="card : ${cards}" class="content">
+            <div class="card-wrapper">
                 <h3 th:text="${card.value} + ': ' + ${card.name}"></h3>
 
                 <details>
                     <summary>Description</summary>
                     <p th:text="${card.desc}"></p> <!-- Beschreibung der Karte -->
                 </details>
-                <p th:text="${card.meaning_up}"></p> <!-- Bedeutung der Karte richtig rum -->
+
+                <p>
+                    <b>Upright meaning</b><br>
+                    <span th:text="${card.meaningUp}"></span>
+                </p>
+                <p>
+                    <b>Reverse meaning</b><br>
+                    <span th:text="${card.meaningRev}"></span>
+                </p>
+
             </div>
         </div>
 

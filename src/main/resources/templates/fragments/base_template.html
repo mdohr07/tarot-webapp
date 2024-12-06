@@ -43,7 +43,9 @@
 
             <ul>
                 <li th:each="card : ${majorArcana}">
-                    <a th:href="@{/all-cards/{cardName}(cardName=${#strings.replace(card.name_short, ' ', '-').toLowerCase()})}" th:text="${card.name}"></a>
+                    <a th:href="@{/all-cards/{cardName}(cardName=${card.nameShort})}"
+                       th:text="${card.name}"></a>
+
                 </li>
             </ul>
 

@@ -16,7 +16,7 @@
         <h2>The Major Arcana</h2>
         <div th:each="card : ${majorArcana}">
             <h3 th:text="${card.value} + ' ' + ${card.name}"></h3>
-            <p th:text="${card.meaning_up}"></p>
+            <p th:text="${card.meaningUp}"></p>
         </div>
 
     </main>
