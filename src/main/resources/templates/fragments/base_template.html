@@ -45,7 +45,6 @@
                 <li th:each="card : ${majorArcana}">
                     <a th:href="@{/all-cards/{cardName}(cardName=${card.nameShort})}"
                        th:text="${card.name}"></a>
-
                 </li>
             </ul>
 
@@ -59,8 +58,11 @@
             <h3><a href="/all-cards/minor-arcana">Minor Arkana</a></h3>
         </section>
         <div>
-            <ul th:each="card : ${minorArcana}" class="arcana-list">
-                <li th:text="${card.name}"></li>
+            <ul>
+                <li th:each="card : ${minorArcana}">
+                    <a th:href="@{/all-cards/{cardName}(cardName=${card.nameShort})}"
+                       th:text="${card.name}"></a>
+                </li>
             </ul>
         </div>
     </section>

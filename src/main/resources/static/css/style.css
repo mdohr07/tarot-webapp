@@ -105,6 +105,18 @@ h1, h1 a, h1 a:visited {
     color: goldenrod;
    }
 
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
 a, a:visited, a:active, a:hover {
     text-decoration: none;
     color: mediumaquamarine;
