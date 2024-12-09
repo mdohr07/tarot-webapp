@@ -16,6 +16,12 @@
         <h2>Card details</h2>
         <h3 th:text="${tarotCard.name}"></h3>
 
+                                                             <!-- nameShort=: Gibt an, welcher Platzhalter ersetzt werden soll -->
+                                                                       <!-- ${tarotCard.nameShort}: Ist der Wert, der in den Platzhalter eingefügt wird-->
+                                                                       <!-- Beispiel:  tarotCard.nameShort = "wakn" > /img/RiderWaiteTarotImages/wakn.jpg -->
+        <img th:src="@{/img/RiderWaiteTarotImages/{nameShort}.jpg(nameShort=${tarotCard.nameShort})}"
+             th:alt="'Image of ' + ${tarotCard.name}" />
+
         <h4>Description</h4>
         <p th:text="${tarotCard.desc}"></p>
 

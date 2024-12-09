@@ -3,12 +3,14 @@ package com.mblip.tarotwebapp.controller;
 import com.mblip.tarotwebapp.model.TarotApiResponse;
 import com.mblip.tarotwebapp.model.TarotCard;
 import com.mblip.tarotwebapp.model.TarotCardWrapper;
+import com.mblip.tarotwebapp.service.TarotService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -18,12 +20,6 @@ import java.util.Objects;
 public class TarotController {
     // TODO: TarotCard getDailyCard()
     // TODO: List<TarotCard> getThreeCards()
-
-    // Index Page
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
 
     //     All Cards Page
     @GetMapping("/all-cards/card-list")
@@ -139,6 +135,41 @@ public class TarotController {
 
         // Falls die Karte nicht gefunden wurde, zurück zur Liste
         return "redirect:/all-cards/card-list";
+    }
+
+    // Daily Card
+    @GetMapping("/")
+    public String showHomePage(Model model) {
+        RestTemplate restTemplate = new RestTemplate();
+        String endpoint = "https://tarotapi.dev/api/v1/cards";
+        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
+
+        if (response != null && response.getNhits() > 0) {
+            List<TarotCard> allCards = response.getCards();
+            TarotCard dailyCard = TarotService.drawDailyCard(allCards);
+
+            model.addAttribute("dailyCard", dailyCard);
+        }
+
+        return "index"; // Gibt die index.html zurück
+    }
+
+    //Zufällige Karte in JSON
+    @GetMapping("/draw-daily-card")
+    @ResponseBody
+    public TarotCard drawDailyCard() {
+        RestTemplate restTemplate = new RestTemplate();
+        String endpoint = "https://tarotapi.dev/api/v1/cards";
+        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
+
+        if (response != null && response.getNhits() > 0) {
+            List<TarotCard> allCards = response.getCards();
+            TarotCard dailyCard = TarotService.drawDailyCard(allCards);
+
+            dailyCard.setImageUrl("/img/RiderWaiteTarotImages/" + dailyCard.getNameShort() + ".jpg");
+            return dailyCard; // Automatisch in JSON umgewandelt
+        }
+        return null;
     }
 
 }

@@ -16,6 +16,7 @@ public class TarotCard {
     @JsonProperty("meaning_rev")
     private String meaningRev;
     private String desc; // description
+    private String imageUrl;
 
     public TarotCard() { }
 
@@ -52,6 +53,10 @@ public class TarotCard {
         return desc;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
     // SETTER
 
     public void setType(String type) {
@@ -84,6 +89,10 @@ public class TarotCard {
 
     public void setDesc(String desc) {
         this.desc = desc;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override

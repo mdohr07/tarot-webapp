@@ -14,12 +14,40 @@
 
     <main>
 
-    <h2>¯\_( ఠ ͟ʖ ఠ)_/¯ ...</h2>
+        <div class="daily-card-container">
+            <h2>Your Daily Card</h2>
+<!--            <img th:src="@{/img/RiderWaiteTarotImages/{nameShort}.jpg(nameShort=${dailyCard.nameShort})}"-->
+<!--                 th:alt="'Bild von ' + ${dailyCard.name}" />-->
+<!--            <p><strong>Name:</strong> <span th:text="${dailyCard.name}"></span></p>-->
+<!--            <p><strong>Bedeutung:</strong> <span th:text="${dailyCard.meaningUp}"></span></p>-->
+            <button id="draw-card-btn">Tageskarte ziehen</button>
+            <div id="daily-card"></div>
+        </div>
 
         <section th:replace="~{fragments/base_template :: arcana-display}"></section>
     </main>
-
 </div>
 
+<script>
+    document.getElementById("draw-card-btn").addEventListener("click", async() => {
+        try {
+            const response = await fetch("/draw-daily-card"); // Endpunkt
+            if (!response.ok) { // Ist die Antwort nicht OK?
+                throw new Error('This is not ok.');
+            }
+            const card = await response.json(); // Erwartet JSON-Daten
+
+            const dailyCardDiv = document.getElementById("daily-card");
+            dailyCardDiv.innerHTML = `
+            <h2>${card.name}</h2>
+            <img src="${card.imageUrl}" alt="Image of ${card.name}" />
+            <p><strong>Bedeutung:</strong> ${card.meaningUp}</p>
+        `;
+
+        } catch (error) {
+            console.error(`Error: `, error);
+            alert("There was a problem loading your card. A truly bad omen...")
+        }});
+</script>
 </body>
 </html>

@@ -17,7 +17,7 @@
         <div th:each="card : ${cards}" class="content">
             <div class="card-wrapper">
                 <h3 th:text="${card.value} + ': ' + ${card.name}"></h3>
-
+                <img th:src="@{/img/RiderWaiteTarotImages/{nameShort}.jpg(nameShort=${card.nameShort})}" alt="Image of ${tarotCard.name}" />
                 <details>
                     <summary>Description</summary>
                     <p th:text="${card.desc}"></p> <!-- Beschreibung der Karte -->
