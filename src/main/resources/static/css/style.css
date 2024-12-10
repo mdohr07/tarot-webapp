@@ -76,7 +76,37 @@ main {
     text-decoration: none;
     -webkit-user-select: none;
     white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
+
+.daily-card-container button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(84, 104, 255, 0.6);
+}
+
+.daily-card-container button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 70%);
+    animation: shimmer 2.5s infinite;
+    pointer-events: none;
+}
+
+/*@keyframes shimmer {*/
+/*    0% {*/
+/*        transform: rotate(0deg);*/
+/*    }*/
+/*    100% {*/
+/*        transform: rotate(360deg);*/
+/*    }*/
+/*}*/
+
 
 .daily-card-container#daily-card {
     flex-direction: column;
