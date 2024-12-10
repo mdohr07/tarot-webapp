@@ -29,16 +29,17 @@ header {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+    justify-items: center;
     margin: 1rem;
     padding: 0;
 }
 
 main {
-    width: 97%;
+    width: 90%;
     margin: 0;
     padding: 0 2rem;
     background-color: #2c2c5c;
-    border-radius: 20px;
+    border-radius: 30px;
 }
 
 .content { /* contains card-wrapper */
@@ -58,10 +59,10 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #3c3c70;
+    text-align: center;
+    background: transparent;
     margin: 2.5rem 0.8rem 2rem 0.8rem;
-    padding: 2rem;
-    border-radius: 20px;
+    border-radius: 30px;
 }
 
 .daily-card-container button {
@@ -69,7 +70,7 @@ main {
     padding: 1.5rem 3rem;
     font-size: 1.5rem;
     border: 2px solid #0073b2;
-    border-radius: 20px;
+    border-radius: 30px;
     background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
     color: #fff;
     cursor: pointer;
@@ -98,41 +99,41 @@ main {
     pointer-events: none;
 }
 
-/*@keyframes shimmer {*/
-/*    0% {*/
-/*        transform: rotate(0deg);*/
-/*    }*/
-/*    100% {*/
-/*        transform: rotate(360deg);*/
-/*    }*/
-/*}*/
+.daily-card-container button {
+    color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
 
+.daily-card-container button #text {
+    animation: neon 3s infinite;
+}
 
 .daily-card-container#daily-card {
     flex-direction: column;
     align-items: center;
 }
 
-.daily-card-container {
-    text-align: center;
+.daily-card-container img.glowing {
+    box-shadow: 0 0 20px rgba(84, 104, 255, 0.6);
 }
 
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #3c3c70;
+    margin: 2.5rem 0.8rem 2rem 0.8rem;
+    padding: 2rem;
+    border-radius: 20px;
+}
 /* Daily Card visibility */
 .invisible {
     display: none;
     opacity: 0;
-}
-
-nav {
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    min-height: 600px;
-    max-height: 100%;
-    background-color: #2c2c5c;
-    margin: 0 1rem;
-    padding: 0.5rem;
-    border-radius: 20px;
 }
 
 /* Containers */
@@ -140,12 +141,10 @@ nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    margin: 2rem 0;
 }
 
 section.major,
 section.minor {
-    /*background-color: #111;*/
     padding: 2rem;
 }
 
@@ -158,6 +157,7 @@ section.minor h3 {
 section.major ul,
 section.minor ul {
     margin: 0.2rem 1rem 0.2rem -25px;
+    gap: 1rem;
 }
 
 section.major ul {
@@ -186,15 +186,16 @@ h1, h1 a, h1 a:visited {
    }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: normal;
 }
 
 h3 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
 }
 
 h4 {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
 }
 
 a, a:visited, a:active, a:hover {
