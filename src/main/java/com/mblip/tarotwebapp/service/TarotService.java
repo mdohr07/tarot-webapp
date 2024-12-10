@@ -15,5 +15,6 @@ public class TarotService {
         Random random = new Random();
         int index = random.nextInt(cardList.size()); // Zufälliger Index
         return cardList.get(index); // Gibt die Karte an diesem Index zurück
+
     }
 }

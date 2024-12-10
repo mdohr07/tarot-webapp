@@ -169,6 +169,9 @@ public class TarotController {
             dailyCard.setImageUrl("/img/RiderWaiteTarotImages/" + dailyCard.getNameShort() + ".jpg");
             return dailyCard; // Automatisch in JSON umgewandelt
         }
+
+        System.out.println("API Response: " + response);
+
         return null;
     }
 
