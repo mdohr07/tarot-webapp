@@ -10,17 +10,18 @@
 
 <div class="content-wrapper">
 
-    <nav th:replace="~{fragments/base_template :: aside}"></nav>
-
     <main>
 
         <div class="daily-card-container">
             <h2>Your Daily Card</h2>
-            <img src="/img/card-back2.jpg" alt="Tarot cards back" id="card-back" />
-            <button id="draw-card-btn">Draw a Card</button>
+            <div id="teaser" class="teaser">
+            <img src="/img/card-back.png" alt="Tarot cards back" id="card-back" />
+            <button id="draw-card-btn" onclick="hideStuff()">Draw a Card</button>
+            </div>
             <div id="daily-card"></div>
         </div>
 
+        <p><a href="/all-cards/card-list">All Cards</a></p>
         <section th:replace="~{fragments/base_template :: arcana-display}"></section>
     </main>
 </div>
@@ -41,10 +42,20 @@
             <p><strong>Bedeutung:</strong> ${card.meaningUp}</p>
         `;
 
+            /* Elemente verstecken */
+            hideStuff()
+
         } catch (error) {
             console.error(`Error: `, error);
             alert("There was a problem loading your card. A truly bad omen...")
-        }});
+        }
+    });
+
+    /* Make stuff in/visible */
+    function hideStuff() {
+        const container = document.querySelector(".teaser");
+        container.classList.add("invisible")
+    }
 </script>
 </body>
 </html>

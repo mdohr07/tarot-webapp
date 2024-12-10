@@ -3,7 +3,7 @@
 }
 
 body {
-    /*background-color: #5457bb;*/
+    background-repeat: repeat;
     background-color: #222246;
     margin: 0;
     padding: 0;
@@ -27,10 +27,18 @@ header {
 
 .content-wrapper {
     display: grid;
-    grid-template-columns: 220px auto;
+    grid-template-columns: 1fr;
     gap: 1rem;
     margin: 1rem;
     padding: 0;
+}
+
+main {
+    width: 97%;
+    margin: 0;
+    padding: 0 2rem;
+    background-color: #2c2c5c;
+    border-radius: 20px;
 }
 
 .content { /* contains card-wrapper */
@@ -79,12 +87,10 @@ header {
     text-align: center;
 }
 
-main {
-    width: 97%;
-    margin: 0;
-    padding: 0 2rem;
-    background-color: #2c2c5c;
-    border-radius: 20px;
+/* Daily Card visibility */
+.invisible {
+    display: none;
+    opacity: 0;
 }
 
 nav {
@@ -121,7 +127,17 @@ section.minor h3 {
 
 section.major ul,
 section.minor ul {
-    margin: 0.2rem 1rem 0.2rem -1rem;
+    margin: 0.2rem 1rem 0.2rem -25px;
+}
+
+section.major ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+section.minor ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 section.major ul li,
