@@ -41,12 +41,10 @@ public class TarotCard {
         return valueInt;
     }
 
-    @JsonProperty("meaning_up")
     public String getMeaningUp() {
         return meaningUp;
     }
 
-    @JsonProperty("meaning_rev")
     public String getMeaningRev() {
         return meaningRev;
     }
