@@ -15,21 +15,21 @@
         <div class="daily-card-container">
             <h2>Your Daily Card</h2>
             <div id="teaser" class="teaser">
-            <img src="/img/card-back.png" alt="Tarot cards back" id="card-back" />
-            <button id="draw-card-btn" onclick="hideStuff()">Draw a Card</button>
+                <img src="/img/card-back.png" alt="Tarot cards back" id="card-back"/>
+                <button id="draw-card-btn" onclick="hideStuff()">Draw a Card</button>
             </div>
             <div id="daily-card"></div>
         </div>
 
         <div class="card-container">
-        <p><a href="/all-cards/card-list">All Cards</a></p>
-        <section th:replace="~{fragments/base_template :: arcana-display}"></section>
+            <p><a href="/all-cards/card-list">All Cards</a></p>
+            <section th:replace="~{fragments/base_template :: arcana-display}"></section>
         </div>
     </main>
 </div>
 
 <script>
-    document.getElementById("draw-card-btn").addEventListener("click", async() => {
+    document.getElementById("draw-card-btn").addEventListener("click", async () => {
         try {
             const response = await fetch("/draw-daily-card"); // Endpunkt
             if (!response.ok) { // Ist die Antwort nicht OK?
@@ -41,11 +41,12 @@
             dailyCardDiv.innerHTML = `
             <h3>${card.name}</h3>
             <img src="${card.imageUrl}" alt="Image of ${card.name}" class="glowing"/>
-            <p><strong>Meaning: </strong>
-            <span th:text="${card.meaningUp}"></span> <br>
-            <span>${card.meaningUp}</span>
-            </p>
+            <p><strong>Meaning: </strong> ${card.meaning_up}</p>
         `;
+
+
+            console.log("Meaning (direct access):", card.meaning_up);
+            console.log("Full card object:", card);
 
             /* Elemente verstecken */
             hideStuff()
@@ -54,6 +55,7 @@
             console.error(`Error: `, error);
             alert("There was a problem loading your card. A truly bad omen...")
         }
+
     });
 
     /* Make stuff in/visible */
