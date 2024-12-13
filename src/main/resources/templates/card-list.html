@@ -38,9 +38,35 @@
     </main>
 </div>
 
+<button onclick="goToTop()" id="toTopBtn" title="Go to top">▲</button>
+
 <video autoplay muted loop id="myVideo">
     <source src="https://cdn.pixabay.com/video/2024/07/07/219968_large.mp4" type="video/mp4">
 </video>
+
+<script>
+    let toTopBtn = document.getElementById("toTopBtn");
+
+    window.onscroll = function() {
+        scrollUpFunction()
+    };
+
+    // When Scrolling down 20px from the top of the document
+    function scrollUpFunction() {
+        if (document.body.scrollTop > 1500 ||
+        document.documentElement.scrollTop > 1500) {
+            toTopBtn.style.display = "block";
+        } else {
+            toTopBtn.style.display = "none";
+        }
+    }
+
+    // When button gets clicked, scroll to top of the document
+    function goToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
 
 </body>
 </html>

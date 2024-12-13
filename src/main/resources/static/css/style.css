@@ -177,15 +177,6 @@ p.prediction {
     background-size: cover;
 }
 
-/*img#one-card-back {*/
-/*    z-index: 100;*/
-/*}*/
-
-/*img#two-cards-back {*/
-/*    z-index: 1;*/
-/*}*/
-
-
 .daily-card-container img.glowing {
     box-shadow: 0 0 20px rgba(84, 104, 255, 0.6);
 }
@@ -334,5 +325,30 @@ a, a:visited, a:active, a:hover {
     min-height: 100%;
     z-index: -1;
     filter: hue-rotate(5deg) saturate(4) brightness(80%) blur(7px);
+}
+
+    button#toTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        z-index: 99;
+        font-size: 40px;
+        border: none;
+        outline: none;
+        background-color: var(--darkerPurple);
+        color: var(--ice);
+        cursor: pointer;
+        padding: 20px 30px 30px 30px;
+        border-radius: 20px;
+        opacity: 0.7;
+    }
+
+    #toTopBtn:hover {
+        transition: ease 1s;
+        background-color: var(--lighterPurple);
+        box-shadow: 0 0 20px rgba(84, 104, 255, 0.6);
+        border-color: var(--lightBlue);
+        color: var(--almostWhite);
 }
 
