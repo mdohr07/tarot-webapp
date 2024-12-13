@@ -15,6 +15,7 @@ public class TarotCard {
     private String meaningUp;
     @JsonProperty("meaning_rev")
     private String meaningRev;
+    private String customMeaningUp;
     private String desc; // description
     private String imageUrl;
 
@@ -47,6 +48,10 @@ public class TarotCard {
 
     public String getMeaningRev() {
         return meaningRev;
+    }
+
+    public String getCustomMeaningUp() {
+        return customMeaningUp;
     }
 
     public String getDesc() {
@@ -85,6 +90,10 @@ public class TarotCard {
 
     public void setMeaningRev(String meaningRev) {
         this.meaningRev = meaningRev;
+    }
+
+    public void setCustomMeaningUp(String customMeaningUp) {
+        this.customMeaningUp = customMeaningUp;
     }
 
     public void setDesc(String desc) {

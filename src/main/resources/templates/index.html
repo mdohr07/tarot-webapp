@@ -28,6 +28,11 @@
     </main>
 </div>
 
+<video autoplay muted loop id="myVideo">
+    <source src="https://videos.pexels.com/video-files/9860820/9860820-hd_1920_1080_30fps.mp4" type="video/mp4">
+</video>
+
+
 <script>
     document.getElementById("draw-card-btn").addEventListener("click", async () => {
         try {
@@ -39,12 +44,13 @@
 
             const dailyCardDiv = document.getElementById("daily-card");
             dailyCardDiv.innerHTML = `
-            <h3>${card.name}</h3>
-            <img src="${card.imageUrl}" alt="Image of ${card.name}" class="glowing"/>
+            <h3 class="cardname">${card.name}</h3>
+            <img src="${card.imageUrl}" alt="Image of ${card.name}" class="glowing card"/>
+            <p class="prediction">${card.customMeaningUp || "Your prediction failed. You're doomed."}</p>
             <p><strong>Meaning: </strong> ${card.meaning_up}</p>
         `;
 
-
+            console.log("Custom Meaning:", card.customMeaningUp)
             console.log("Meaning (direct access):", card.meaning_up);
             console.log("Full card object:", card);
 
@@ -62,6 +68,9 @@
     function hideStuff() {
         const container = document.querySelector(".teaser");
         container.classList.add("invisible")
+
+        const cardContainer = document.querySelector(".card-container");
+        cardContainer.classList.add("invisible")
     }
 </script>
 </body>

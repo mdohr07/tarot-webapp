@@ -1,0 +1,317 @@
+{
+  "cards": [
+    {
+      "name": "The Fool",
+      "customMeaningUp": "Step boldly into the unknown, for chaos and wonder await. A leap of faith may bring either glory or catastrophe."
+    },
+    {
+      "name": "The Magician",
+      "customMeaningUp": "You wield the power of the cosmos itself—use it wisely, or face the wrath of imbalance."
+    },
+    {
+      "name": "The High Priestess",
+      "customMeaningUp": "Secrets whisper in the shadows, and intuition holds the key to forbidden truths."
+    },
+    {
+      "name": "The Empress",
+      "customMeaningUp": "Abundance flourishes around you, but beware—too much of a good thing can suffocate."
+    },
+    {
+      "name": "The Emperor",
+      "customMeaningUp": "Order and control reign supreme, but beware of the iron fist of tyranny."
+    },
+    {
+      "name": "The Hierophant",
+      "customMeaningUp": "Tradition holds wisdom, but rigid rules may stifle the spirit. Dare to question the old ways."
+    },
+    {
+      "name": "The Lovers",
+      "customMeaningUp": "Passion ignites like wildfire, but every choice has consequences that ripple through eternity."
+    },
+    {
+      "name": "The Chariot",
+      "customMeaningUp": "Victory is within your grasp, but hold tight to the reins, or chaos will overtake you."
+    },
+    {
+      "name": "Strength",
+      "customMeaningUp": "True power lies in gentleness; a beast tamed is mightier than one slain."
+    },
+    {
+      "name": "The Hermit",
+      "customMeaningUp": "Solitude unveils hidden truths, but isolation can blur the path ahead."
+    },
+    {
+      "name": "Wheel of Fortune",
+      "customMeaningUp": "Fate spins its web; fortune smiles, but her favor is fleeting."
+    },
+    {
+      "name": "Justice",
+      "customMeaningUp": "The scales will balance, but every truth revealed casts a shadow."
+    },
+    {
+      "name": "The Hanged Man",
+      "customMeaningUp": "Sacrifice brings enlightenment, yet the cost may leave you dangling in uncertainty."
+    },
+    {
+      "name": "Death",
+      "customMeaningUp": "An end brings a powerful new beginning, but transformation is never painless."
+    },
+    {
+      "name": "Temperance",
+      "customMeaningUp": "Harmony flows where extremes are tempered, yet balance is a delicate dance."
+    },
+    {
+      "name": "The Devil",
+      "customMeaningUp": "Temptation binds you, but every chain can be broken with courage and willpower."
+    },
+    {
+      "name": "The Tower",
+      "customMeaningUp": "Destruction rains down, but from the rubble rises a stronger foundation."
+    },
+    {
+      "name": "The Star",
+      "customMeaningUp": "Hope shines brightly, guiding you through the darkest night."
+    },
+    {
+      "name": "The Moon",
+      "customMeaningUp": "Illusions weave a web of mystery; trust your instincts to see through the haze."
+    },
+    {
+      "name": "The Sun",
+      "customMeaningUp": "Radiant joy lights your path, but even the brightest sun casts shadows."
+    },
+    {
+      "name": "Judgement",
+      "customMeaningUp": "The past calls for reckoning; redemption is within reach if you dare to answer."
+    },
+    {
+      "name": "The World",
+      "customMeaningUp": "Completion crowns your journey, but every ending births a new beginning."
+    },
+    {
+      "name": "Ace of Wands",
+      "customMeaningUp": "A fiery spark ignites within you; seize the moment before it burns out."
+    },
+    {
+      "name": "Two of Wands",
+      "customMeaningUp": "The world lies before you, waiting for your command. Choose your path with care."
+    },
+    {
+      "name": "Three of Wands",
+      "customMeaningUp": "Your plans bear fruit; the horizon beckons with endless possibilities."
+    },
+    {
+      "name": "Four of Wands",
+      "customMeaningUp": "Celebrate triumph, for this is a moment of pure joy and unity."
+    },
+    {
+      "name": "Five of Wands",
+      "customMeaningUp": "Conflict brews, but from chaos emerges growth and understanding."
+    },
+    {
+      "name": "Six of Wands",
+      "customMeaningUp": "Victory is yours, but the applause fades quickly."
+    },
+    {
+      "name": "Seven of Wands",
+      "customMeaningUp": "Stand your ground; the battle may be fierce, but your resolve is unshakable."
+    },
+    {
+      "name": "Eight of Wands",
+      "customMeaningUp": "Momentum accelerates; act swiftly, for hesitation could mean disaster."
+    },
+    {
+      "name": "Nine of Wands",
+      "customMeaningUp": "Though weary, your perseverance will lead you to triumph."
+    },
+    {
+      "name": "Ten of Wands",
+      "customMeaningUp": "The weight you carry is great, but the destination is in sight."
+    },
+    {
+      "name": "Page of Wands",
+      "customMeaningUp": "Adventure calls; embrace it with the heart of a curious child."
+    },
+    {
+      "name": "Knight of Wands",
+      "customMeaningUp": "Charge forward with fiery determination, but beware of reckless haste."
+    },
+    {
+      "name": "Queen of Wands",
+      "customMeaningUp": "Your charisma burns bright; wield it wisely to inspire and lead."
+    },
+    {
+      "name": "King of Wands",
+      "customMeaningUp": "Authority flows from your vision; command respect, but not through fear."
+    },
+    {
+      "name": "Ace of Cups",
+      "customMeaningUp": "Your heart overflows with emotion; let love guide your path."
+    },
+    {
+      "name": "Two of Cups",
+      "customMeaningUp": "A perfect union forms, but its strength lies in mutual trust and care."
+    },
+    {
+      "name": "Three of Cups",
+      "customMeaningUp": "Rejoice in friendship and shared joy, for these are the bonds that sustain you."
+    },
+    {
+      "name": "Four of Cups",
+      "customMeaningUp": "Opportunity knocks, but discontent clouds your vision."
+    },
+    {
+      "name": "Five of Cups",
+      "customMeaningUp": "Loss weighs heavy, yet hope glimmers in what remains."
+    },
+    {
+      "name": "Six of Cups",
+      "customMeaningUp": "Nostalgia offers comfort, but beware of dwelling too long in the past."
+    },
+    {
+      "name": "Seven of Cups",
+      "customMeaningUp": "Dreams and illusions abound; choose wisely, for not all is as it seems."
+    },
+    {
+      "name": "Eight of Cups",
+      "customMeaningUp": "Walk away from what no longer serves you; the unknown holds your salvation."
+    },
+    {
+      "name": "Nine of Cups",
+      "customMeaningUp": "Contentment is yours, but complacency could be your undoing."
+    },
+    {
+      "name": "Ten of Cups",
+      "customMeaningUp": "Harmony reigns supreme; cherish this moment of perfect happiness."
+    },
+    {
+      "name": "Page of Cups",
+      "customMeaningUp": "An unexpected message stirs your heart; let creativity flow freely."
+    },
+    {
+      "name": "Knight of Cups",
+      "customMeaningUp": "A romantic journey unfolds; follow your heart, but keep your head clear."
+    },
+    {
+      "name": "Queen of Cups",
+      "customMeaningUp": "Empathy and intuition guide your actions; embrace your emotional depth."
+    },
+    {
+      "name": "King of Cups",
+      "customMeaningUp": "Mastery of emotions grants you strength; lead with wisdom and compassion."
+    },
+    {
+      "name": "Ace of Swords",
+      "customMeaningUp": "Clarity and truth pierce through confusion; wield your intellect boldly."
+    },
+    {
+      "name": "Two of Swords",
+      "customMeaningUp": "A stalemate forces you to make a choice; trust in your inner balance."
+    },
+    {
+      "name": "Three of Swords",
+      "customMeaningUp": "Heartache strikes deep, but healing begins in acceptance."
+    },
+    {
+      "name": "Four of Swords",
+      "customMeaningUp": "Rest brings recovery; take time to regain your strength."
+    },
+    {
+      "name": "Five of Swords",
+      "customMeaningUp": "Victory at what cost? Reflect on your actions and their consequences."
+    },
+    {
+      "name": "Six of Swords",
+      "customMeaningUp": "Transition brings relief, though the journey ahead may be uncertain."
+    },
+    {
+      "name": "Seven of Swords",
+      "customMeaningUp": "Cleverness or deceit? Use your wits, but remain true to your values."
+    },
+    {
+      "name": "Eight of Swords",
+      "customMeaningUp": "Self-imposed restrictions bind you; freedom lies in shifting perspective."
+    },
+    {
+      "name": "Nine of Swords",
+      "customMeaningUp": "Nightmares haunt you, but facing your fears leads to liberation."
+    },
+    {
+      "name": "Ten of Swords",
+      "customMeaningUp": "A painful ending clears the way for new beginnings; surrender to the flow."
+    },
+    {
+      "name": "Page of Swords",
+      "customMeaningUp": "Curiosity sparks your mind; approach new ideas with youthful enthusiasm."
+    },
+    {
+      "name": "Knight of Swords",
+      "customMeaningUp": "Charge ahead with conviction, but beware of impulsiveness."
+    },
+    {
+      "name": "Queen of Swords",
+      "customMeaningUp": "Wisdom and clarity guide your decisions; cut through illusions with precision."
+    },
+    {
+      "name": "King of Swords",
+      "customMeaningUp": "Logic and authority define your leadership; rule with fairness and reason."
+    },
+    {
+      "name": "Ace of Pentacles",
+      "customMeaningUp": "A seed of prosperity takes root; nurture it wisely for lasting abundance."
+    },
+    {
+      "name": "Two of Pentacles",
+      "customMeaningUp": "Balance is key as you juggle multiple priorities; adaptability leads to success."
+    },
+    {
+      "name": "Three of Pentacles",
+      "customMeaningUp": "Collaboration and skill come together to build something enduring."
+    },
+    {
+      "name": "Four of Pentacles",
+      "customMeaningUp": "Clinging to security may block growth; let go to let abundance flow."
+    },
+    {
+      "name": "Five of Pentacles",
+      "customMeaningUp": "Hardship weighs heavy, but hope glimmers in reaching out for help."
+    },
+    {
+      "name": "Six of Pentacles",
+      "customMeaningUp": "Generosity creates harmony; giving and receiving are equally valuable."
+    },
+    {
+      "name": "Seven of Pentacles",
+      "customMeaningUp": "Patience rewards effort; take time to assess and nurture your progress."
+    },
+    {
+      "name": "Eight of Pentacles",
+      "customMeaningUp": "Dedication and hard work refine your craft; mastery is within reach."
+    },
+    {
+      "name": "Nine of Pentacles",
+      "customMeaningUp": "Self-reliance and accomplishment shine; enjoy the fruits of your labor."
+    },
+    {
+      "name": "Ten of Pentacles",
+      "customMeaningUp": "Legacy and fulfillment converge; cherish the stability you have built."
+    },
+    {
+      "name": "Page of Pentacles",
+      "customMeaningUp": "Curiosity and ambition guide you toward new opportunities for growth."
+    },
+    {
+      "name": "Knight of Pentacles",
+      "customMeaningUp": "Persistence and responsibility pave the way to long-term success."
+    },
+    {
+      "name": "Queen of Pentacles",
+      "customMeaningUp": "Nurturing and practicality create a haven of comfort and abundance."
+    },
+    {
+      "name": "King of Pentacles",
+      "customMeaningUp": "Wealth and stability crown your achievements; lead with generosity."
+    }
+  ]
+}
+

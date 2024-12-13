@@ -13,6 +13,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+// Für Eigenes JSON (customMeaningUp.json)
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -140,17 +149,35 @@ public class TarotController {
     // Daily Card
     @GetMapping("/")
     public String showHomePage(Model model) {
+        // API-Aufruf
         RestTemplate restTemplate = new RestTemplate();
         String endpoint = "https://tarotapi.dev/api/v1/cards";
         TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
 
-        if (response != null && response.getNhits() > 0) {
-            List<TarotCard> allCards = response.getCards();
-            TarotCard dailyCard = TarotService.drawDailyCard(allCards);
+        List<TarotCard> allCards = (response != null && response.getCards() != null)
+                ? response.getCards()
+                : List.of();
 
+        // Lokale Daten aus json laden
+        List<TarotCard> localCards = loadLocalCards();
+
+        // API-Karten mit lokalen Karten abgleichen oder ergänzen
+        allCards.forEach(apiCard -> {
+            localCards.stream()
+                    .filter(localCard -> localCard.getName() != null && localCard.getName().equals(apiCard.getName()))
+                    .findFirst()
+                    .ifPresent(localCard -> {
+                        System.out.println("Found matching card: " + localCard.getName());
+                        apiCard.setCustomMeaningUp(localCard.getCustomMeaningUp());
+                    });
+        });
+
+
+        // Zufällige Tageskarte ziehen
+        if (!allCards.isEmpty()) {
+            TarotCard dailyCard = TarotService.drawDailyCard(allCards);
             model.addAttribute("dailyCard", dailyCard);
         }
-
         return "index"; // Gibt die index.html zurück
     }
 
@@ -166,13 +193,46 @@ public class TarotController {
             List<TarotCard> allCards = response.getCards();
             TarotCard dailyCard = TarotService.drawDailyCard(allCards);
 
+            // customMeaningUp aus lokalem json hinzufügen
+            List<TarotCard> localCards = loadLocalCards();
+            localCards.stream()
+                            .filter(localCard -> localCard.getName() != null && localCard.getName().equals(dailyCard.getName()))
+                                    .findFirst()
+                                            .ifPresent(localCard -> {
+                                                dailyCard.setCustomMeaningUp(localCard.getCustomMeaningUp());
+                                            });
+
             dailyCard.setImageUrl("/img/RiderWaiteTarotImages/" + dailyCard.getNameShort() + ".jpg");
             return dailyCard; // Automatisch in JSON umgewandelt
         }
 
         System.out.println("API Response: " + response);
-
         return null;
+    }
+
+    // Custom Meaning für Tageskarte laden
+    private List<TarotCard> loadLocalCards() {
+        try {
+            // Ressource im Klassenpfad laden
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("static/json/customMeaningUp.json");
+
+            // Falls die Ressource nicht gefunden wurde
+            if (inputStream == null) {
+                throw new FileNotFoundException("customMeaningUp.json nicht gefunden!");
+            }
+
+            // JSON-Datei lesen
+            String jsonContent = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+
+            // JSON in Objekt umwandeln
+            ObjectMapper objectMapper = new ObjectMapper();
+            TarotCardWrapper wrapper = objectMapper.readValue(jsonContent, TarotCardWrapper.class);
+
+            return wrapper.getCards();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return List.of();  // Rückgabe einer leeren Liste bei Fehler
+        }
     }
 
 }

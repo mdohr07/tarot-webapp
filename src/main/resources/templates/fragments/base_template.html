@@ -16,10 +16,9 @@
 <header th:fragment="header">
     <h1>
         <a th:href="@{/}">
-            Blue Tarot
+            ☽ Blue Tarot
         </a>
     </h1>
-
 </header>
 
 <div th:fragment="arcana-display" class="arcana-display">
@@ -28,21 +27,12 @@
             <h3>Major Arkana</h3>
         </section>
         <div>
-<!--            <ul>-->
-<!--                <li th:each="card : ${majorArcana}">-->
-<!--                    <a th:href="@{/all-cards/{cardName}(cardName=${card.name})}" th:text="${card.name}"></a>-->
-<!--                </li>-->
-<!--            </ul>-->
-
             <ul>
                 <li th:each="card : ${majorArcana}">
                     <a th:href="@{/all-cards/{cardName}(cardName=${card.nameShort})}"
                        th:text="${card.name}"></a>
                 </li>
             </ul>
-
-            <p>¯\_( ఠ ͟ʖ ఠ)_/¯ ...</p>
-
         </div>
     </section>
 
@@ -62,7 +52,7 @@
 </div>
 
 <th:block th:fragment="footer_entries">
-    <script src="/static/js/functions.js"></script> <!-- Hier im Footer -->
+    <script src="/static/js/functions.js"></script>
 </th:block>
 
 </body>
