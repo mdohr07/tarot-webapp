@@ -4,6 +4,13 @@
     --mediumDarkBlue: #15235a;
     --pigeonBlue: #6687bb;
     --turquoise: #37e5aa;
+    --lightBlue: #0fffff;
+    --ice: #ADE9FF;
+    --almostWhite: #fefefe;
+    --bubblegumPink: #FF0099;
+    --lighterPurple: #aa64ff;
+    --darkerPurple: #8000ff;
+    --saturatedBlue: #0016b8;
 }
 
 * {
@@ -19,7 +26,7 @@ body {
     font-optical-sizing: auto;
     font-weight: normal;
     font-style: normal;
-    color: #ade9ff;
+    color: var(--ice);
 }
 
 header {
@@ -77,7 +84,7 @@ main {
 }
 
 .card-list-single img {
-    background-color: #fefefe;
+    background-color: var(--almostWhite);
     padding: 5px;
     border-radius: 10px;
     border: 1px solid var(--middleOfTheNight);
@@ -101,9 +108,9 @@ main {
     padding: 1rem 3rem;
     font-family: "Princess Sofia", cursive;
     font-size: 2rem;
-    border: 2px solid #aa64ff;
+    border: 2px solid var(--lighterPurple);
     border-radius: 30px;
-    background-image: radial-gradient(100% 100% at 100% 0, #8000ff 0, #0016b8 100%);
+    background-image: radial-gradient(100% 100% at 100% 0, var(--darkerPurple) 0, var(--saturatedBlue) 100%);
     cursor: pointer;
     text-decoration: none;
     -webkit-user-select: none;
@@ -111,7 +118,7 @@ main {
     position: relative;
     overflow: hidden;
     transition: transform 0.2s, box-shadow 0.2s;
-    color: #fff;
+    color: var(--almostWhite);
     text-align: center;
     -webkit-animation: glow 1s ease-in-out infinite alternate;
     -moz-animation: glow 1s ease-in-out infinite alternate;
@@ -119,15 +126,15 @@ main {
 }
 
 #draw-card-btn {
-    text-shadow: 0 0 10px #F09, 0 0 4px #CFF; /* x-offset y-offset blur-radius color; */
-    color: #CFF;
+    text-shadow: 0 0 10px var(--bubblegumPink), 0 0 4px var(--almostWhite); /* x-offset y-offset blur-radius color; */
+    color: var(--ice);
 }
 
 .daily-card-container button:hover {
     box-shadow: 0 0 20px rgba(84, 104, 255, 0.6);
-    border-color: #0ff;
-    background-image: radial-gradient(100% 100% at 100% 0, #00118e 0, #8000ff 100%);
-    text-shadow: 0 0 10px #fff, 0 0 4px #0ff;
+    border-color: var(--lightBlue);
+    background-image: radial-gradient(100% 100% at 100% 0, var(--saturatedBlue) 0, var(--darkerPurple) 100%);
+    text-shadow: 0 0 10px var(--almostWhite), 0 0 4px var(--lightBlue);
     color: #fff;
 }
 
@@ -147,15 +154,15 @@ main {
     align-items: center;
 }
 
-.card img {
-    background-color: #fefefe;
+img.card {
+    background-color: var(--almostWhite);
     padding: 5px;
     border-radius: 10px;
 }
 
 p.prediction {
     background-color: var(--pigeonBlue);
-    color: #2c2c5c;
+    color: var(--middleOfTheNight);
     font-weight: bolder;
     margin-top: 1rem;
     padding: 1rem;
@@ -192,6 +199,7 @@ p.prediction {
     padding: 2rem;
     border-radius: 20px;
 }
+
 /* Daily Card visibility */
 .invisible {
     display: none;
@@ -239,6 +247,17 @@ section.minor ul li {
     margin-right: 1rem;
 }
 
+.detail-view {
+    display: grid;
+    justify-items: center;
+    width: 80%;
+    text-align: justify;
+}
+
+.detail-view .card-meanings {
+    display: block;
+}
+
 /* Text styles */
 
 h1, h2, h3, h4, h5 {
@@ -251,7 +270,7 @@ h1, h1 a, h1 a:visited {
     font-style: normal;
     margin-left: 1.4rem;
     color: goldenrod;
-    text-shadow: 0 0 10px mediumaquamarine, 0 0 4px #000; /* x-offset y-offset blur-radius color; */
+    text-shadow: 0 0 10px var(--turquoise), 0 0 4px #000; /* x-offset y-offset blur-radius color; */
    }
 
 h2 {
@@ -285,5 +304,6 @@ a, a:visited, a:active, a:hover {
     min-width: 100%;
     min-height: 100%;
     z-index: -1;
+    filter: hue-rotate(5deg) saturate(4) brightness(80%) blur(7px);
 }
 

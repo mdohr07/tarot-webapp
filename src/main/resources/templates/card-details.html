@@ -11,30 +11,35 @@
 
 
     <main>
-       
+
         <h2>Card details</h2>
-        <h3 th:text="${tarotCard.name}"></h3>
 
-                                                             <!-- nameShort=: Gibt an, welcher Platzhalter ersetzt werden soll -->
-                                                                       <!-- ${tarotCard.nameShort}: Ist der Wert, der in den Platzhalter eingefügt wird-->
-                                                                       <!-- Beispiel:  tarotCard.nameShort = "wakn" > /img/RiderWaiteTarotImages/wakn.jpg -->
-        <img th:src="@{/img/RiderWaiteTarotImages/{nameShort}.jpg(nameShort=${tarotCard.nameShort})}"
-             th:alt="'Image of ' + ${tarotCard.name}" />
+        <section class="detail-view">
+            <h3 th:text="${tarotCard.name}"></h3>
 
-        <h4>Description</h4>
-        <p th:text="${tarotCard.desc}"></p>
+            <!-- nameShort=: Gibt an, welcher Platzhalter ersetzt werden soll -->
+            <!-- ${tarotCard.nameShort}: Ist der Wert, der in den Platzhalter eingefügt wird-->
+            <!-- Beispiel:  tarotCard.nameShort = "wakn" > /img/RiderWaiteTarotImages/wakn.jpg -->
+            <img th:src="@{/img/RiderWaiteTarotImages/{nameShort}.jpg(nameShort=${tarotCard.nameShort})}"
+                 th:alt="'Image of ' + ${tarotCard.name}" class="card"/>
 
-        <p>
-        <b>Upright meaning</b><br>
-        <span th:text="${tarotCard.meaningUp}"></span>
-        </p>
+            <section class="card-meanings">
+                <h4>Description</h4>
+                <span th:text="${tarotCard.desc}"></span>
 
-        <p>
-        <b>Reverse meaning</b><br>
-        <span th:text="${tarotCard.meaningRev}"></span>
-        </p>
+                <p>
+                    <b>Upright meaning</b><br>
+                    <span th:text="${tarotCard.meaningUp}"></span>
+                </p>
 
-        <a href="/all-cards/card-list" class="button">Back to All Cards</a>
+                <p>
+                    <b>Reverse meaning</b><br>
+                    <span th:text="${tarotCard.meaningRev}"></span>
+                </p>
+            </section>
+
+            <a href="/all-cards/card-list" class="button">Back to All Cards</a>
+        </section>
     </main>
 </div>
 
