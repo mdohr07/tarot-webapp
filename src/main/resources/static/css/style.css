@@ -64,6 +64,7 @@ main {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     width: 95%;
+    margin-bottom: 3rem;
 }
 
 .card-list-single { /* Einzelkarten-Ansicht in Liste */
@@ -269,9 +270,37 @@ h1, h1 a, h1 a:visited {
     font-weight: 400;
     font-style: normal;
     margin-left: 1.4rem;
-    color: goldenrod;
-    text-shadow: 0 0 10px var(--turquoise), 0 0 4px #000; /* x-offset y-offset blur-radius color; */
+    color: var(--turquoise);
+    text-shadow:
+            0 0 10px var(--turquoise),
+            0 0 4px var(--darkBlue);
+    animation: softGlitter 3s infinite;
+    transition: all 0.4s ease-in-out;
    }
+
+h1:hover,
+h1 a:hover {
+    color: gold;
+    text-shadow:
+            0 0 15px var(--lightBlue),
+            0 0 25px var(--turquoise),
+            0 0 10px var(--pigeonBlue);
+    animation: hoverGlow 2s infinite alternate;
+}
+
+/* Keyframes für Leuchten */
+@keyframes softGlitter {
+    0% { text-shadow: 0 0 10px var(--turquoise), 0 0 4px var(--darkBlue); }
+    33% { text-shadow: 0 0 12px var(--ice), 0 0 6px var(--mediumDarkBlue); }
+    66% { text-shadow: 0 0 14px var(--bubblegumPink), 0 0 8px var(--darkBlue); }
+    100% { text-shadow: 0 0 10px var(--turquoise), 0 0 4px var(--darkBlue); }
+}
+
+/* Keyframes für Leuchten beim Hover */
+@keyframes hoverGlow {
+    0% { text-shadow: 0 0 15px orangered, 0 0 25px orange; }
+    100% { text-shadow: 0 0 20px goldenrod, 0 0 30px var(--bubblegumPink); }
+}
 
 h2 {
     font-size: 2rem;
