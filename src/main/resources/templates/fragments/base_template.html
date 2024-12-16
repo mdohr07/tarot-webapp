@@ -7,7 +7,8 @@
         <link th:href="@{/css/style.css}" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Princess+Sofia&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Princess+Sofia&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap"
+              rel="stylesheet">
     </th:block>
     <title>Blue Tarot</title>
 </head>
@@ -33,7 +34,9 @@
                        th:text="${card.name}"></a>
                 </li>
             </ul>
-
+            <section class="three-card-teaser">
+                <a href="/past-present-future" class="small-draw-card-btn">Draw three cards</a>
+            </section>
         </div>
     </section>
 
@@ -50,6 +53,7 @@
             </ul>
         </div>
     </section>
+    <p style="text-align: center"><a href="/all-cards/card-list" style="margin-left:1.5rem;">See All Cards →</a></p>
 </div>
 
 <th:block th:fragment="footer_entries">

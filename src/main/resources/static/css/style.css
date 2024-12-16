@@ -131,7 +131,31 @@ main {
     color: var(--ice);
 }
 
-.daily-card-container button:hover {
+.small-draw-card-btn {
+    letter-spacing: 2px;
+    width: 70%;
+    padding: 0.5rem 1.5rem;
+    font-family: "Princess Sofia", cursive;
+    font-size: 1.5rem;
+    border: 2px solid var(--lighterPurple);
+    border-radius: 30px;
+    background-image: radial-gradient(100% 100% at 100% 0, var(--darkerPurple) 0, var(--saturatedBlue) 100%);
+    cursor: pointer;
+    text-decoration: none;
+    -webkit-user-select: none;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: var(--almostWhite);
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+    text-shadow: 0 0 10px var(--bubblegumPink), 0 0 4px var(--almostWhite); /* x-offset y-offset blur-radius color; */
+}
+
+.daily-card-container button:hover, .small-draw-card-btn:hover {
     box-shadow: 0 0 20px rgba(84, 104, 255, 0.6);
     border-color: var(--lightBlue);
     background-image: radial-gradient(100% 100% at 100% 0, var(--saturatedBlue) 0, var(--darkerPurple) 100%);
@@ -175,21 +199,38 @@ p.prediction {
     background: radial-gradient(circle, rgba(33,135,194,1) 0%, rgba(15,29,76,1) 61%);
     background-position: center top;
     background-size: cover;
+    width: fit-content;
 }
 
-.daily-card-container img.glowing {
+img.glowing {
     box-shadow: 0 0 20px rgba(84, 104, 255, 0.6);
 }
 
 .card-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    width: 100%;
     background-color: var(--mediumDarkBlue);
-    margin: 2.5rem 0.8rem 2rem 0.8rem;
+    margin: 2rem 0;
     padding: 2rem;
     border-radius: 20px;
+}
+
+.three-card-teaser {
+    background-image: url('../img/reading.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 20% 35%;
+    height: 500px;
+    filter: hue-rotate(20deg);
+    margin: 1rem 0;
+    border-radius: 30px;
+    align-content: end;
+    text-align: center;
+    padding: 2rem;
 }
 
 /* Daily Card visibility */
@@ -207,7 +248,7 @@ p.prediction {
 
 section.major,
 section.minor {
-    padding: 2rem;
+    font-size: smaller;
 }
 
 section.major h3,
@@ -252,9 +293,19 @@ section.minor ul li {
 
 /* Past, Present & Future reading */
 .past-present-future {
-
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
+.past-present-future > section {
+    text-align: center;
+}
+
+.past-present-future p {
+    text-align: justify;
+}
 /* Text styles */
 
 h1, h2, h3, h4, h5 {
@@ -301,6 +352,7 @@ h1 a:hover {
 h2 {
     font-size: 2rem;
     font-weight: normal;
+    text-align: center;
 }
 
 h3 {
