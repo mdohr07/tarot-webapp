@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments/base_template :: head_entries}"/>
+    <title>Blue Tarot | All Cards</title>
+</head>
+<body>
+<header th:replace="~{fragments/base_template :: header}"></header>
+
+<div class="content-wrapper">
+
+
+    <main>
+
+        <div>
+            <h2>Drei Karten</h2>
+            <ul>
+                <li th:each="card : ${threeCards}">
+                    <img th:src="@{/img/RiderWaiteTarotImages/{card.nameShort}.jpg}" th:alt="${card.name}" />
+                    <p th:text="${card.name}"></p>
+                    <p th:text="${card.customMeaningUp ?: 'Standardbedeutung'}"></p>
+                </li>
+            </ul>
+        </div>
+
+    </main>
+</div>
+
+<video autoplay muted loop id="myVideo">
+    <source src="https://cdn.pixabay.com/video/2024/07/07/219968_large.mp4" type="video/mp4">
+</video>
+
+
+</body>
+</html>

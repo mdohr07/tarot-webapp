@@ -27,8 +27,7 @@ import java.util.Objects;
 
 @Controller
 public class TarotController {
-    // TODO: TarotCard getDailyCard()
-    // TODO: List<TarotCard> getThreeCards()
+
 
     //     All Cards Page
     @GetMapping("/all-cards/card-list")
@@ -146,6 +145,56 @@ public class TarotController {
         return "redirect:/all-cards/card-list";
     }
 
+    // Draw three cards
+    @GetMapping("/draw-three-cards")
+    @ResponseBody
+    public List<TarotCard> drawThreeCards() {
+        RestTemplate restTemplate = new RestTemplate();
+        String endpoint = "https://tarotapi.dev/api/v1/cards";
+        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
+
+        if (response != null && response.getNhits() > 0) {
+            List<TarotCard> allCards = response.getCards();
+            List<TarotCard> threeCards = TarotService.drawThreeCards(allCards);
+
+            // CustomMeaningUp für jede Karte hinzufügen
+            List<TarotCard> localCards = loadLocalCards();
+            threeCards.forEach(card -> localCards.stream()
+                    .filter(localCard -> localCard.getName() != null && localCard.getName().equals(card.getName()))
+                    .findFirst()
+                    .ifPresent(localCard -> card.setCustomMeaningUp(localCard.getCustomMeaningUp()))
+            );
+
+            return threeCards; // Als JSON übergeben
+        }
+        return List.of();
+    }
+
+    // Show three cards
+    @GetMapping("/past-present-future")
+    public String showPastPresentFuture(Model model) {
+        RestTemplate restTemplate = new RestTemplate();
+        String endpoint = "https://tarotapi.dev/api/v1/cards";
+        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
+
+        if (response != null && response.getNhits() > 0) {
+            List<TarotCard> allCards = response.getCards();
+            List<TarotCard> threeCards = TarotService.drawThreeCards(allCards);
+
+            // customMeaningUp hinzufügen
+            List<TarotCard> localCards = loadLocalCards();
+            threeCards.forEach(card -> localCards.stream()
+                    .filter(localCard -> localCard.getName() != null && localCard.getName().equals(card.getName()))
+                    .findFirst()
+                    .ifPresent(localCard -> card.setCustomMeaningUp(localCard.getCustomMeaningUp()))
+            );
+            model.addAttribute("threeCards", threeCards); // Karten ins Model
+        } else {
+            model.addAttribute("threeCards", List.of()); // Leere Liste
+        }
+        return "past-present-future";
+    }
+
     // Daily Card
     @GetMapping("/")
     public String showHomePage(Model model) {
@@ -196,11 +245,11 @@ public class TarotController {
             // customMeaningUp aus lokalem json hinzufügen
             List<TarotCard> localCards = loadLocalCards();
             localCards.stream()
-                            .filter(localCard -> localCard.getName() != null && localCard.getName().equals(dailyCard.getName()))
-                                    .findFirst()
-                                            .ifPresent(localCard -> {
-                                                dailyCard.setCustomMeaningUp(localCard.getCustomMeaningUp());
-                                            });
+                    .filter(localCard -> localCard.getName() != null && localCard.getName().equals(dailyCard.getName()))
+                    .findFirst()
+                    .ifPresent(localCard -> {
+                        dailyCard.setCustomMeaningUp(localCard.getCustomMeaningUp());
+                    });
 
             dailyCard.setImageUrl("/img/RiderWaiteTarotImages/" + dailyCard.getNameShort() + ".jpg");
             return dailyCard; // Automatisch in JSON umgewandelt
