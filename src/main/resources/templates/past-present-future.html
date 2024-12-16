@@ -13,14 +13,21 @@
     <main>
 
         <div>
-            <h2>Drei Karten</h2>
-            <ul>
-                <li th:each="card : ${threeCards}">
-                    <img th:src="@{/img/RiderWaiteTarotImages/{card.nameShort}.jpg}" th:alt="${card.name}" />
-                    <p th:text="${card.name}"></p>
-                    <p th:text="${card.customMeaningUp ?: 'Standardbedeutung'}"></p>
-                </li>
-            </ul>
+            <h2>Past, Present & Future</h2>
+            <div class="past-present-future">
+                <section th:each="card, stat : ${threeCards}">
+                    <!-- Überschrift abhängig von der Position -->
+                    <h3 th:if="${stat.index == 0}">Past</h3>
+                    <h3 th:if="${stat.index == 1}">Present</h3>
+                    <h3 th:if="${stat.index == 2}">Future</h3>
+
+                    <!-- Karteninformationen -->
+                    <img th:src="@{/img/RiderWaiteTarotImages/{nameShort}.jpg(nameShort=${card.nameShort})}"
+                         th:alt="${card.name}" class="glowing card"/>
+                    <p th:text="${card.customMeaningUp ?: 'Standard Meaning'}" class="prediction"></p>
+                    <p th:text="${card.meaningUp}"></p>
+                </section>
+            </div>
         </div>
 
     </main>
