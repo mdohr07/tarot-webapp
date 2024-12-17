@@ -27,9 +27,6 @@
     </main>
 </div>
 
-
-
-
 <script>
     document.getElementById("draw-card-btn").addEventListener("click", async () => {
         try {
@@ -69,6 +66,31 @@
         const cardContainer = document.querySelector(".card-container");
         cardContainer.classList.add("invisible")
     }
+
+    /* Music Player */
+    const music = document.getElementById("music");
+    const playBtn = document.getElementById("play-btn");
+    const pauseBtn = document.getElementById("pause-btn");
+    const timeDisplay = document.getElementById("time-display");
+
+    playBtn.addEventListener("click", () => {
+        music.play();
+    });
+
+    pauseBtn.addEventListener("click", () => {
+        music.pause();
+    });
+
+    music.addEventListener("timeupdate", () => {
+        // Math.floor() rundet eine Zahl immer nach unten auf die nächstkleinere Ganzzahl.
+        const minutes = Math.floor(music.currentTime / 60);
+        const seconds = Math.floor(music.currentTime % 60)
+            .toString()
+            .padStart(2, "0")
+        timeDisplay.textContent = `${minutes}:${seconds}`;
+    });
+
+
 </script>
 </body>
 </html>

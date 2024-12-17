@@ -17,8 +17,6 @@ import org.springframework.web.client.RestTemplate;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -28,13 +26,14 @@ import java.util.Objects;
 @Controller
 public class TarotController {
 
+    private static final String BASE_URL = "https://tarotapi.dev/api/v1/cards";
+
 
     //     All Cards Page
-    @GetMapping("/all-cards/card-list")
+    @GetMapping("/cards/card-list")
     public String getAllCards(Model model) {
         RestTemplate restTemplate = new RestTemplate();
-        String endpoint = "https://tarotapi.dev/api/v1/cards";
-        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
+        TarotCardWrapper response = restTemplate.getForObject(BASE_URL, TarotCardWrapper.class);
 
         if (response != null && response.getCards() != null) {
             model.addAttribute("cards", response.getCards());
@@ -45,13 +44,10 @@ public class TarotController {
     }
 
     // Major Arcana page
-    @GetMapping("/all-cards/major-arcana")
+    @GetMapping("/cards/major-arcana")
     public String showMajorArcana(Model model) {
         RestTemplate restTemplate = new RestTemplate();
-        String endpoint = "https://tarotapi.dev/api/v1/cards";
-
-        // API-Antwort in die Wrapper-Klasse konvertieren (von meiner Klasse unter "model")
-        ResponseEntity<TarotApiResponse> response = restTemplate.getForEntity(endpoint, TarotApiResponse.class);
+        ResponseEntity<TarotApiResponse> response = restTemplate.getForEntity(BASE_URL, TarotApiResponse.class);
 
         // Karten filtern
         List<TarotCard> majorArcana = Objects.requireNonNull(response.getBody())
@@ -69,9 +65,8 @@ public class TarotController {
     public List<TarotCard> feedMajorArcana() {
     /*  Immer wenn eine Seite geladen wird, die einen Controller benutzt,
         wird die Methode feedMajorArcana() aufgerufen */
-        RestTemplate restTemplate = new RestTemplate(); // API-Anfrage
-        String endpoint = "https://tarotapi.dev/api/v1/cards";
-        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
+        RestTemplate restTemplate = new RestTemplate();
+        TarotCardWrapper response = restTemplate.getForObject(BASE_URL, TarotCardWrapper.class);
 
         if (response != null && response.getCards() != null) {
             /* listet alle Karten aus der API-Antwort, .stream() wandelt die Liste in einen Stream um */
@@ -84,13 +79,10 @@ public class TarotController {
     }
 
     // Minor Arcana page
-    @GetMapping("/all-cards/minor-arcana")
+    @GetMapping("/cards/minor-arcana")
     public String showMinorArcana(Model model) {
         RestTemplate restTemplate = new RestTemplate();
-        String endpoint = "https://tarotapi.dev/api/v1/cards";
-
-        // API-Antwort in die Wrapper-Klasse konvertieren (von meiner Klasse unter "model")
-        ResponseEntity<TarotApiResponse> response = restTemplate.getForEntity(endpoint, TarotApiResponse.class);
+        ResponseEntity<TarotApiResponse> response = restTemplate.getForEntity(BASE_URL, TarotApiResponse.class);
 
         // Karten filtern
         List<TarotCard> minorArcana = Objects.requireNonNull(response.getBody())
@@ -106,9 +98,8 @@ public class TarotController {
 
     @ModelAttribute("minorArcana")
     public List<TarotCard> feedMinorArcana() {
-        RestTemplate restTemplate = new RestTemplate(); // API-Anfrage
-        String endpoint = "https://tarotapi.dev/api/v1/cards";
-        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
+        RestTemplate restTemplate = new RestTemplate();
+        TarotCardWrapper response = restTemplate.getForObject(BASE_URL, TarotCardWrapper.class);
 
         if (response != null && response.getCards() != null) {
             return response.getCards().stream()
@@ -120,13 +111,10 @@ public class TarotController {
     }
 
     // Card Details
-    @GetMapping("/all-cards/{nameShort}")
+    @GetMapping("/cards/{nameShort}")
     public String showCardDetails(@PathVariable String nameShort, Model model) {
         RestTemplate restTemplate = new RestTemplate();
-        String endpoint = "https://tarotapi.dev/api/v1/cards";
-
-        // API-Aufruf
-        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
+        TarotCardWrapper response = restTemplate.getForObject(BASE_URL, TarotCardWrapper.class);
 
         if (response != null && response.getNhits() > 0) {
             // Suche nach Karte basierend auf name_short
@@ -150,8 +138,7 @@ public class TarotController {
     @ResponseBody
     public List<TarotCard> drawThreeCards() {
         RestTemplate restTemplate = new RestTemplate();
-        String endpoint = "https://tarotapi.dev/api/v1/cards";
-        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
+        TarotCardWrapper response = restTemplate.getForObject(BASE_URL, TarotCardWrapper.class);
 
         if (response != null && response.getNhits() > 0) {
             List<TarotCard> allCards = response.getCards();
@@ -174,8 +161,7 @@ public class TarotController {
     @GetMapping("/past-present-future")
     public String showPastPresentFuture(Model model) {
         RestTemplate restTemplate = new RestTemplate();
-        String endpoint = "https://tarotapi.dev/api/v1/cards";
-        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
+        TarotCardWrapper response = restTemplate.getForObject(BASE_URL, TarotCardWrapper.class);
 
         if (response != null && response.getNhits() > 0) {
             List<TarotCard> allCards = response.getCards();
@@ -200,8 +186,7 @@ public class TarotController {
     public String showHomePage(Model model) {
         // API-Aufruf
         RestTemplate restTemplate = new RestTemplate();
-        String endpoint = "https://tarotapi.dev/api/v1/cards";
-        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
+        TarotCardWrapper response = restTemplate.getForObject(BASE_URL, TarotCardWrapper.class);
 
         List<TarotCard> allCards = (response != null && response.getCards() != null)
                 ? response.getCards()
@@ -235,8 +220,7 @@ public class TarotController {
     @ResponseBody
     public TarotCard drawDailyCard() {
         RestTemplate restTemplate = new RestTemplate();
-        String endpoint = "https://tarotapi.dev/api/v1/cards";
-        TarotCardWrapper response = restTemplate.getForObject(endpoint, TarotCardWrapper.class);
+        TarotCardWrapper response = restTemplate.getForObject(BASE_URL, TarotCardWrapper.class);
 
         if (response != null && response.getNhits() > 0) {
             List<TarotCard> allCards = response.getCards();

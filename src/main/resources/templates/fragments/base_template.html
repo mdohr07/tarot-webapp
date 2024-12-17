@@ -23,6 +23,15 @@
     <video autoplay muted loop id="myVideo">
         <source src="../video/particles.mp4" type="video/mp4">
     </video>
+
+    <div id="custom-player">
+        <button id="play-btn">▶</button>
+        <button id="pause-btn">⏸</button>
+        <span id="time-display">0:00</span>
+    </div>
+    <audio id="music" loop>
+        <source src="../music/wonders-of-the-ocean-160390.mp3" type="audio/mp3">
+    </audio>
 </header>
 
 <div th:fragment="arcana-display" class="arcana-display">
@@ -33,7 +42,7 @@
         <div>
             <ul>
                 <li th:each="card : ${majorArcana}">
-                    <a th:href="@{/all-cards/{cardName}(cardName=${card.nameShort})}"
+                    <a th:href="@{/cards/{cardName}(cardName=${card.nameShort})}"
                        th:text="${card.name}"></a>
                 </li>
             </ul>
@@ -50,13 +59,13 @@
         <div>
             <ul>
                 <li th:each="card : ${minorArcana}">
-                    <a th:href="@{/all-cards/{cardName}(cardName=${card.nameShort})}"
+                    <a th:href="@{/cards/{cardName}(cardName=${card.nameShort})}"
                        th:text="${card.name}"></a>
                 </li>
             </ul>
         </div>
     </section>
-    <p style="text-align: center"><a href="/all-cards/card-list" style="margin-left:1.5rem;">See All Cards →</a></p>
+    <p style="text-align: center"><a href="/cards/card-list" style="margin-left:1.5rem;">See All Cards →</a></p>
 </div>
 
 <th:block th:fragment="footer_entries">

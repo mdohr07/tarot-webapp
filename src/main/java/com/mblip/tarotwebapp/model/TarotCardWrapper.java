@@ -22,5 +22,4 @@ public class TarotCardWrapper {
     public void setCards(List<TarotCard> cards) {
         this.cards = cards;
     }
-
 }

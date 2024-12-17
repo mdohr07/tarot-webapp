@@ -196,7 +196,7 @@ p.prediction {
 
 .daily-card-container {
     background: rgb(33,135,194);
-    background: radial-gradient(circle, rgba(33,135,194,1) 0%, rgba(15,29,76,1) 61%);
+    background: radial-gradient(circle, rgba(33,135,194,1) 0%, rgba(15,29,76,1) 41%);
     background-position: center top;
     background-size: cover;
     width: fit-content;
@@ -373,7 +373,6 @@ a, a:visited, a:active, a:hover {
 }
 
 /* Other */
-/* Style the video: 100% width and height to cover the entire window */
 #myVideo {
     position: fixed;
     right: 0;
@@ -383,6 +382,37 @@ a, a:visited, a:active, a:hover {
     z-index: -1;
     filter: hue-rotate(5deg) saturate(4) brightness(80%) blur(7px);
 }
+
+#custom-player {
+    display: grid;
+    grid-template-columns: 1fr 1fr 30px;
+    background: transparent;
+    gap: 10px;
+    height: fit-content;
+    color: var(--pigeonBlue);
+    padding: 10px;
+    border: 1px solid var(--darkBlue);
+    border-radius: 10px;
+    align-items: center;
+    margin-top: 25px;
+    margin-right: 55px;
+}
+
+#custom-player > button {
+    background-color: transparent;
+    border: 1px solid var(--darkBlue);
+    color: var(--saturatedBlue);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#custom-player > button:hover {
+    color: var(--lighterPurple);
+    border: 1px solid var(--darkerPurple);
+}
+
 
     button#toTopBtn {
         display: none;
